@@ -1,0 +1,85 @@
+@use '../helpers' as *;
+
+.reviews {
+  display: grid;
+  grid-template-areas:
+    'header body'
+    'actions body';
+  column-gap: 50px;
+
+  @include desktop {
+    grid-template-areas:
+      'header'
+      'body'
+      'actions';
+
+    row-gap: 50px;
+  }
+
+  @include tablet {
+    grid-template-areas:
+      'header'
+      'body';
+  }
+
+  &__header {
+    grid-area: header;
+
+    max-width: 400px;
+  }
+
+  &__actions {
+    grid-area: actions;
+
+    display: flex;
+    column-gap: 50px;
+
+    @include desktop {
+      justify-content: center;
+    }
+  }
+
+  &__button {
+    @include square(var(--button-height-normal));
+
+    align-self: start;
+  }
+
+  &__body {
+    grid-area: body;
+
+    display: flex;
+    justify-content: end;
+    column-gap: 30px;
+    margin-top: -50px;
+
+    @include desktop {
+      flex-direction: column;
+      row-gap: 30px;
+      margin-top: 0;
+    }
+  }
+
+  &__list-wrapper {
+    max-width: 500px;
+
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-black);
+
+    overflow: hidden;
+
+    @include mobile {
+      max-width: min(500px, calc(100vw - 2 * var(--container-s-padding-x)));
+    }
+  }
+
+  &__list {
+    display: flex;
+
+    transition-duration: 1s;
+  }
+
+  &__pagination {
+    align-self: center;
+  }
+}

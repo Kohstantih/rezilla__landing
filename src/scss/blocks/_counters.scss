@@ -1,0 +1,35 @@
+@use '../helpers' as *;
+
+.counters {
+  display: flex;
+  justify-content: center;
+
+  column-gap: 30px;
+
+  @include mobile {
+    flex-direction: column;
+    row-gap: 28px;
+  }
+
+  &__item {
+    @include flex-center();
+
+    display: flex;
+    column-gap: 10px;
+    height: 100px;
+    padding-inline: 35px;
+
+    border-radius: var(--border-radius-large);
+    background-color: var(--color-light);
+
+    box-shadow: var(--shadow-black);
+  }
+
+  &__text {
+    @include fluid-text(19, 16);
+
+    font-weight: 500;
+
+    color: var(--color-dark-light);
+  }
+}

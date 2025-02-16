@@ -1,0 +1,85 @@
+@use '../helpers' as *;
+
+.listings {
+  --bodyWidth: calc(var(--container-width) - 2 * var(--container-s-padding-x));
+
+  display: grid;
+  grid-template-areas:
+    'header actions'
+    'body body';
+  gap: 50px;
+
+  @include tablet {
+    grid-template-areas:
+      'header'
+      'actions'
+      'body';
+  }
+
+  &__header {
+    grid-area: header;
+    max-width: 500px;
+  }
+
+  &__actions {
+    grid-area: actions;
+
+    justify-self: end;
+
+    @include tablet {
+      justify-self: left;
+    }
+  }
+
+  &__body {
+    grid-area: body;
+
+    @include desktop-above {
+      margin-right: calc((100vw - var(--bodyWidth)) / 2 * -1);
+    }
+  }
+
+  &__slider {
+    display: flex;
+    align-items: center;
+    column-gap: 50px;
+
+    @include desktop-above {
+      overflow-x: scroll;
+      padding-right: 80px;
+
+      &::-webkit-scrollbar {
+        width: 0;
+      }
+    }
+
+    @include desktop {
+      flex-direction: column;
+      row-gap: 60px;
+    }
+  }
+
+  &__slider-button {
+    flex-shrink: 0;
+  }
+
+  &__list {
+    flex-shrink: 0;
+
+    display: flex;
+    gap: 50px;
+
+    @include desktop {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @include tablet {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__item {
+    flex-shrink: 0;
+  }
+}

@@ -1,0 +1,59 @@
+@use 'fonts';
+@use 'normalize';
+@use 'variables';
+@use 'utils';
+@use 'globals';
+
+// * blocks
+// ** common
+
+@use 'blocks/button';
+@use 'blocks/logo';
+@use 'blocks/burger-button';
+@use 'blocks/cross-button';
+@use 'blocks/pagination-button';
+@use 'blocks/pagination';
+@use 'blocks/field';
+@use 'blocks/advance-search';
+@use 'blocks/status';
+@use 'blocks/apartments-details';
+@use 'blocks/filter';
+@use 'blocks/rating';
+
+// ** section
+
+@use 'blocks/header';
+@use 'blocks/section';
+@use 'blocks/hero';
+@use 'blocks/presentation';
+@use 'blocks/search-form';
+@use 'blocks/form-destination';
+@use 'blocks/search-parameters';
+@use 'blocks/partnership';
+@use 'blocks/counters';
+@use 'blocks/customers';
+@use 'blocks/companies';
+@use 'blocks/about-us';
+@use 'blocks/porter-card';
+@use 'blocks/gallery';
+@use 'blocks/listings';
+@use 'blocks/listing-card';
+@use 'blocks/services';
+@use 'blocks/service-card';
+@use 'blocks/districts';
+@use 'blocks/district-card';
+@use 'blocks/team';
+@use 'blocks/team-card';
+@use 'blocks/posts';
+@use 'blocks/post-card';
+@use 'blocks/reviews';
+@use 'blocks/review-card';
+@use 'blocks/banner';
+@use 'blocks/footer';
+@use 'blocks/footer-menu';
+@use 'blocks/discovery';
+@use 'blocks/subscribe-form';
+@use 'blocks/soc1als';
+
+// ** modals
+@use 'blocks/mobile-overlay';

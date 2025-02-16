@@ -1,0 +1,116 @@
+@use '../helpers' as *;
+
+.footer {
+  padding-top: var(--section-padding-y);
+
+  background-color: var(--color-violet-light);
+
+  @include mobile {
+    text-align: center;
+  }
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: var(--section-padding-y);
+
+    @include tablet {
+      justify-content: space-around;
+    }
+
+    @include mobile {
+      flex-direction: column;
+      justify-content: start;
+      align-items: center;
+      row-gap: 30px;
+    }
+  }
+
+  &__contacts {
+    display: flex;
+    flex-direction: column;
+    row-gap: 25px;
+  }
+
+  &__logo {
+    align-self: start;
+
+    @include mobile {
+      align-self: center;
+    }
+  }
+
+  &__contacts-body {
+    display: flex;
+    flex-direction: column;
+    row-gap: 25px;
+  }
+
+  &__contacts-item {
+    display: flex;
+    align-items: center;
+    column-gap: 5px;
+  }
+
+  &__contacts-link {
+    @include reset-link;
+
+    @include hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__contacts-icon {
+    @include square(20px);
+  }
+
+  &__media {
+    display: flex;
+    flex-direction: column;
+    row-gap: 25px;
+  }
+
+  &__subscribe-form {
+    & input {
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-black);
+    }
+  }
+
+  &__extra {
+    display: flex;
+    align-items: center;
+    height: 50px;
+
+    color: var(--color-gray);
+
+    background-color: var(--color-dark);
+  }
+
+  &__extra-body {
+    flex-grow: 1;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include mobile {
+      flex-grow: 0;
+    }
+  }
+
+  &__extra-link-box {
+    display: flex;
+    column-gap: 40px;
+  }
+
+  &__extra-link {
+    @include reset-link;
+
+    @include hover {
+      color: var(--color-light);
+
+      text-decoration: underline;
+    }
+  }
+}

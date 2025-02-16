@@ -1,0 +1,42 @@
+@use '../helpers' as *;
+
+.about-us {
+  display: grid;
+  grid-template-areas:
+    'header images'
+    'list images';
+  gap: 40px;
+
+  @include desktop {
+    grid-template-areas:
+      'header'
+      'images'
+      'list';
+  }
+
+  &__header {
+    grid-area: header;
+
+    max-width: 500px;
+  }
+
+  &__list {
+    grid-area: list;
+
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+
+    @include desktop {
+      justify-self: center;
+    }
+  }
+
+  &__images {
+    grid-area: images;
+
+    @include desktop {
+      padding-top: 20px;
+    }
+  }
+}

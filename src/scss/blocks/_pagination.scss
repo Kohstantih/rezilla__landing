@@ -1,0 +1,80 @@
+@use '../helpers' as *;
+
+.pagination {
+  $this: &;
+
+  --lineWidth: 100px;
+  --lineHeight: 4px;
+  --lineInset: -20px 0;
+  --lineIsActiveColor: var(--color-primary);
+  --lineNormalColor: var(--color-light);
+
+  &__list {
+    display: flex;
+    justify-content: space-between;
+
+    &--vertical {
+      --lineHeight: 42px;
+      --lineWidth: 4px;
+      --lineInset: 0 -20px;
+      
+      max-height: fit-content;
+      flex-direction: column;
+      row-gap: 12px;
+
+      @include desktop {
+        --lineWidth: 42px;
+        --lineHeight: 4px;
+        --lineInset: -20px 0;
+
+        flex-direction: row;
+        column-gap: 12px;
+      }
+    }
+  }
+
+  &__line {
+    position: relative;
+
+    width: var(--lineWidth);
+    height: var(--lineHeight);
+
+    background-color: var(--lineNormalColor);
+    opacity: 0.5;
+
+    cursor: pointer;
+
+    @include hover {
+      opacity: 1;
+    }
+
+    @include mobile {
+      width: clamp(57px, 13vw, var(--lineWidth));
+    }
+
+    &:has(#{$this}__action:checked) {
+      background-color: var(--lineIsActiveColor);
+      opacity: 1;
+      pointer-events: none;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: var(--lineInset);
+    }
+
+    &--primary {
+      --lineIsActiveColor: var(--color-primary);
+    }
+
+    &--light {
+      --lineIsActiveColor: var(--color-light);
+    }
+
+    &--gray {
+      --lineIsActiveColor: var(--color-gray-dark);
+      --lineNormalColor: var(--color-gray);
+    }
+  }
+}

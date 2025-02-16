@@ -1,0 +1,38 @@
+@use '../helpers' as *;
+
+.porter-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 25px;
+  height: 131px;
+  max-width: 400px;
+  padding-inline: 30px;
+
+  color: var(--color-blue-dark);
+  background-color: var(--color-light);
+  border-radius: var(--border-radius);
+
+  box-shadow: var(--shadow-black);
+
+  @include mobile {
+    height: 117px;
+    max-width: 400px;
+  }
+
+  &__image {
+    @include square(40px);
+
+    @include mobile {
+      @include square(33px);
+    }
+  }
+
+  &__title {
+    @include fluid-text(19px, 16px);
+  }
+
+  &__description {
+    color: var(--color-gray-dark);
+  }
+}

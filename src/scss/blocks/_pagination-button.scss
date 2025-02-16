@@ -1,0 +1,62 @@
+@use '../helpers' as *;
+
+.pagination-button {
+  --colorMain: var(--color-primary);
+  --colorBg: var(--color-light);
+  --heightButton: var(--button-height-small);
+
+  @include flex-center;
+
+  min-width: var(--heightButton);
+  min-height: var(--heightButton);
+
+  color: var(--colorMain);
+  border-radius: 50%;
+  background-color: var(--colorBg);
+
+  @include hover {
+    scale: 1.2;
+
+    color: var(--colorBg);
+    background-color: var(--colorMain);
+  }
+
+  &--middle {
+    --heightButton: var(--button-height-normal);
+
+    @include mobile {
+      --heightButton: var(--button-height-small);
+    }
+  }
+
+  &--blue {
+    --colorMain: var(--color-blue-dark);
+  }
+
+  &--primary-bg {
+    --colorMain: var(--color-light);
+    --colorBg: var(--color-primary);
+  }
+
+  &--rotate {
+    rotate: 180deg;
+  }
+
+  &--bordered {
+    border: 1px solid var(--colorMain);
+
+    @include hover {
+      border-color: var(--colorBg);
+    }
+  }
+
+  &__icon {
+    width: 8px;
+    height: 16px;
+
+    &--arrow {
+      width: 22px;
+      height: 16px;
+    }
+  }
+}

@@ -1,0 +1,45 @@
+@use '../helpers' as *;
+
+.services {
+  position: relative;
+
+  &::after {
+    @include square(50px);
+
+    content: '';
+    position: absolute;
+    bottom: -200px;
+    left: 50%;
+
+    border-radius: 50%;
+    background: var(--ball-gradient);
+
+    @include desktop {
+      bottom: -80px;
+      left: 60%;
+    }
+  }
+
+  &__header {
+    margin-bottom: 60px;
+
+    @include tablet {
+      margin-bottom: 50px;
+    }
+  }
+
+  &__list {
+    display: flex;
+    column-gap: 50px;
+
+    @include desktop {
+      column-gap: 30px;
+    }
+
+    @include tablet {
+      flex-direction: column;
+      align-items: center;
+      row-gap: 30px;
+    }
+  }
+}

@@ -1,0 +1,81 @@
+@use '../helpers' as *;
+
+.service-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 30px;
+  max-width: 340px;
+  padding: 60px;
+
+  text-align: center;
+
+  border-radius: var(--border-radius);
+  background-color: var(--color-light);
+
+  @include desktop {
+    padding: 40px;
+  }
+
+  &__title {
+    @include fluid-text(19, 16);
+
+    color: var(--color-dark-light);
+
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
+
+  &__text {
+    color: var(--color-gray-dark);
+  }
+
+  &__image-box {
+    @include flex-center;
+    @include square(90px);
+
+    border-radius: 50%;
+    background-color: var(--color-blue-dark);
+
+    box-shadow: var(--shadow-blue);
+
+    @include mobile {
+      @include square(60px);
+    }
+  }
+
+  &__image {
+    color: var(--color-light);
+
+    &--search {
+      @include square(40px);
+
+      @include mobile {
+        @include square(26px);
+      }
+    }
+
+    &--home {
+      width: 40px;
+      height: 42px;
+
+      fill: none;
+
+      @include mobile {
+        width: 24px;
+        height: 25px;
+      }
+    }
+
+    &--bed {
+      width: 48px;
+      height: 35px;
+
+      @include mobile {
+        width: 28px;
+        height: 20px;
+      }
+    }
+  }
+}

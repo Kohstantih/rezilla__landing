@@ -1,0 +1,13 @@
+@use '../helpers' as *;
+
+.search-parameters {
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
+  padding-inline: var(--search-form-padding);
+  padding-block: 20px;
+
+  @include mobile {
+    row-gap: 20px;
+  }
+}

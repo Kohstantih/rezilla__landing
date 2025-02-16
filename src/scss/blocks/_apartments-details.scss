@@ -1,0 +1,29 @@
+@use '../helpers' as *;
+
+.apartments-details {
+  &__list {
+    display: flex;
+    align-items: center;
+    column-gap: 20px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+  }
+
+  &__icon {
+    @include flex-center;
+
+    &--bed {
+      width: 30px;
+      height: 22px;
+    }
+
+    &--bath {
+      width: 24px;
+      height: 24px;
+    }
+  }
+}

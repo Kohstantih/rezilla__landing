@@ -1,0 +1,49 @@
+@use '../helpers' as *;
+
+.customers {
+  &__list {
+    display: flex;
+  }
+
+  &__item {
+    @include square(36px);
+
+    position: relative;
+
+    border: 2px solid var(--color-light);
+    border-radius: 50%;
+
+    overflow: hidden;
+
+    &:not(:first-child) {
+      margin-left: -12px;
+    }
+  }
+
+  &__image {
+    &--cross {
+      @include square(100%);
+
+      position: relative;
+
+      background-color: var(--color-dark);
+
+      &::after,
+      &::before {
+        @include abs-center;
+
+        content: '';
+        position: absolute;
+
+        width: 10px;
+        height: 2px;
+
+        background-color: var(--color-light);
+      }
+
+      &::before {
+        rotate: 90deg;
+      }
+    }
+  }
+}

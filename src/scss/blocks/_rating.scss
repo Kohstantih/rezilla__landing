@@ -1,0 +1,22 @@
+@use '../helpers' as *;
+
+.rating {
+  max-width: fit-content;
+
+  &__list {
+    display: flex;
+    column-gap: 5px;
+  }
+
+  &__element {
+    color: var(--color-gray-light);
+
+    &[data-is-active='true'] {
+      color: var(--color-gold);
+    }
+  }
+
+  &__icon {
+    @include square(14px);
+  }
+}

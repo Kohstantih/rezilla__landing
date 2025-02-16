@@ -1,0 +1,38 @@
+@use '../helpers' as *;
+
+.team {
+  &__header {
+    margin-bottom: 100px;
+
+    @include tablet {
+      margin-bottom: 60px;
+    }
+
+    @include mobile {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__list {
+    display: flex;
+    justify-content: center;
+    column-gap: 60px;
+
+    @include desktop {
+      column-gap: 50px;
+    }
+
+    @include tablet {
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+  }
+
+  &__item {
+    @include tablet {
+      min-width: 40%;
+      display: flex;
+      justify-content: center;
+    }
+  }
+}

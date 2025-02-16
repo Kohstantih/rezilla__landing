@@ -1,0 +1,64 @@
+@use '../helpers' as *;
+
+.section {
+  padding-block: var(--section-padding-y);
+
+  &--hidden-x {
+    overflow-x: hidden;
+  }
+
+  &--gray-bg {
+    background-color: var(--color-gray-light);
+  }
+
+  &--primary-bg {
+    color: var(--color-light);
+    background-color: var(--color-primary);
+  }
+
+  &--margin {
+    margin-block: var(--section-padding-y);
+  }
+
+  &__inner {
+    @include desktop {
+      max-width: fit-content;
+    }
+  }
+
+  &__header {
+    margin-bottom: 30px;
+
+    @include tablet {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__title {
+    @include fluid-text(19, 16);
+
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-align: left;
+
+    color: var(--color-primary);
+
+    &--center {
+      text-align: center;
+    }
+
+    &--gray {
+      color: var(--color-dark-light);
+    }
+
+    &--light {
+      color: var(--color-light);
+    }
+  }
+
+  &__footer {
+    margin-top: 60px;
+  }
+}

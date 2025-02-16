@@ -1,0 +1,40 @@
+@use '../helpers' as *;
+
+.filter {
+  $this: &;
+
+  font-size: 16px;
+  font-weight: 500;
+
+  color: var(--color-primary);
+
+  &__fieldset {
+    display: flex;
+    column-gap: 20px;
+  }
+
+  &__item {
+    @include flex-center;
+
+    height: 49px;
+    padding-inline: 30px;
+
+    border: var(--border);
+    border-radius: var(--border-radius);
+
+    cursor: pointer;
+
+    &:has(#{$this}__field:checked) {
+      color: var(--color-light);
+      background-color: var(--color-primary);
+
+      pointer-events: none;
+    }
+
+    @include hover {
+      color: var(--color-light);
+      border-color: var(--color-gray);
+      background-color: var(--color-gray);
+    }
+  }
+}

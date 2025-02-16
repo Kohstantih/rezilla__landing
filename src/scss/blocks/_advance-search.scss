@@ -1,0 +1,19 @@
+@use '../helpers' as *;
+
+.advance-search {
+  display: inline-flex;
+  column-gap: 10px;
+  padding-inline: var(--search-form-padding);
+
+  text-transform: capitalize;
+
+  color: var(--color-primary);
+
+  @include hover {
+    text-decoration: underline;
+  }
+
+  &__icon {
+    @include square(14px);
+  }
+}

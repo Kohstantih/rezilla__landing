@@ -1,0 +1,98 @@
+@use '../helpers' as *;
+
+.gallery {
+  display: flex;
+  column-gap: 20px;
+  height: 100%;
+
+  &__left-block {
+    align-self: end;
+
+    @include desktop {
+      padding-top: 30px;
+    }
+  }
+
+  &__right-block {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+
+    @include desktop {
+      padding-top: 0;
+    }
+  }
+
+  &__image-wrapper {
+    position: relative;
+
+    &--stamp {
+      &::before {
+        @include square(200px);
+
+        content: '';
+        position: absolute;
+        top: -90px;
+        left: -115px;
+
+        background: url('/images/gallery/circle-text.svg') center/contain no-repeat;
+
+        @include desktop {
+          @include square(170px);
+          top: -60px;
+          left: -107px;
+        }
+
+        @include mobile {
+          @include square(125px);
+          top: -37px;
+          left: -87px;
+        }
+      }
+    }
+
+    &--ball {
+      &::after {
+        @include square(60px);
+
+        content: '';
+        position: absolute;
+        bottom: -40px;
+        left: 70px;
+
+        border-radius: 50%;
+        background: var(--ball-gradient);
+
+        rotate: 45deg;
+
+        @include mobile {
+          @include square(40px);
+
+          bottom: -26px;
+          left: clamp(35px, 9.11vw, 70px);
+        }
+      }
+    }
+  }
+
+  &__image {
+    border-radius: var(--border-radius);
+
+    box-shadow: var(--shadow-black);
+
+    &--left {
+      min-width: clamp(170px, 19.44vw, 280px);
+      height: auto;
+    }
+
+    &--right-up {
+      min-width: clamp(143px, 19.44vw, 277px);
+      height: auto;
+    }
+
+    &--right-down {
+      min-width: clamp(143px, 19.44vw, 277px);
+      height: auto;
+    }
+  }
+}

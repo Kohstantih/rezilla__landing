@@ -1,0 +1,71 @@
+@use '../helpers' as *;
+
+.listing-card {
+  max-width: 340px;
+
+  position: relative;
+
+  color: var(--color-dark-light);
+
+  &__link {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+
+  &__image-wrapper {
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+
+    border-radius: var(--border-radius);
+
+    overflow: hidden;
+
+    @include mobile {
+      height: 220px;
+    }
+  }
+
+  &__image {
+    object-fit: cover;
+  }
+
+  &__status {
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+    z-index: 2;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    row-gap: 18px;
+
+    @include mobile {
+      row-gap: 14px;
+    }
+  }
+
+  &__price {
+    @include fluid-text(27, 19);
+
+    line-height: 1;
+    font-weight: 600;
+  }
+
+  &__title {
+    @include fluid-text(19, 16);
+
+    line-height: 1;
+  }
+
+  &__text {
+    line-height: 1;
+
+    color: var(--color-gray-dark);
+  }
+}

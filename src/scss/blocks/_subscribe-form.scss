@@ -1,0 +1,28 @@
+@use '../helpers' as *;
+
+.subscribe-form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  max-width: 350px;
+
+  &__title {
+    @include fluid-text(19, 16);
+
+    font-weight: 500;
+  }
+
+  &__body {
+    position: relative;
+  }
+
+  &__field {
+    padding-right: 60px;
+  }
+
+  &__button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+  }
+}

@@ -1,0 +1,102 @@
+@use '../helpers' as *;
+
+.presentation {
+  --presentationImageWidth: 540px;
+
+  max-width: 560px;
+
+  @include mobile {
+    --presentationImageWidth: clamp(333px, 70vw, 540px);
+  }
+
+  &__body {
+    position: relative;
+
+    max-width: fit-content;
+    margin-top: 40px;
+    margin-left: calc(-1 * var(--button-height-small) / 2);
+
+    @include mobile {
+      margin-inline: auto;
+    }
+
+    &::before {
+      @include square(60px);
+
+      content: '';
+      position: absolute;
+      top: -40px;
+      right: 0;
+      z-index: -1;
+
+      display: block;
+
+      border-radius: 50%;
+      background: var(--ball-gradient);
+
+      rotate: 45deg;
+
+      @include mobile {
+        @include square(40px);
+
+        top: -26px;
+        right: 40px;
+      }
+    }
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+  }
+
+  &__list-wrapper {
+    max-width: var(--presentationImageWidth);
+
+    border-radius: var(--border-radius-small);
+    box-shadow: var(--shadow-black);
+    overflow: hidden;
+  }
+
+  &__list {
+    position: relative;
+    display: flex;
+
+    transition-duration: 1s;
+  }
+
+  &__item {
+    flex-shrink: 0;
+    max-width: var(--presentationImageWidth);
+  }
+
+  &__button {
+    --buttonOffset: calc(-1 * var(--button-height-small) / 2);
+
+    position: relative;
+
+    @include mobile {
+      --buttonOffset: calc(-1 * var(--button-height-small));
+    }
+
+    &--left {
+      margin-right: var(--buttonOffset);
+      z-index: 1;
+    }
+
+    &--right {
+      margin-left: var(--buttonOffset);
+    }
+  }
+
+  &__pagination {
+    width: 100%;
+    margin-inline: auto;
+    margin-top: 9px;
+    padding-inline: 28px;
+
+    @include mobile {
+      padding-inline: 19px;
+    }
+  }
+}

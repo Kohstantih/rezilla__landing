@@ -1,0 +1,43 @@
+@use '../helpers' as *;
+
+.partnership {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 68px;
+
+  @include mobile-above {
+    &::before {
+      @include square(100px);
+
+      content: '';
+      position: absolute;
+      top: 150px;
+      left: 60px;
+      z-index: 1;
+
+      display: block;
+
+      border-radius: 50%;
+      background: var(--ball-gradient);
+
+      rotate: -45deg;
+    }
+  }
+
+  @include mobile {
+    flex-direction: column-reverse;
+    row-gap: 50px;
+  }
+
+  &__companies {
+    align-self: stretch;
+    padding-block: 45px;
+
+    @include mobile {
+      padding-block: 0;
+    }
+  }
+}

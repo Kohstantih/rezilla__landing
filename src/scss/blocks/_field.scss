@@ -1,0 +1,75 @@
+@use '../helpers' as *;
+
+.field {
+  --fieldPadding: 20px;
+
+  position: relative;
+
+  &__icon-select {
+    position: absolute;
+    top: 50%;
+    right: var(--fieldPadding);
+    translate: 0 -50%;
+
+    width: 20px;
+    height: 9px;
+
+    color: var(--color-gray);
+
+    pointer-events: none;
+  }
+
+  &__input {
+    --colorPlaceholder: var(--color-gray);
+    --colorBg: var(--color-gray-light-20);
+    --colorBgHover: var(--color-light);
+
+    width: 100%;
+    height: var(--button-height-large);
+    padding-inline: var(--fieldPadding);
+
+    font-size: 16px;
+
+    border: 1px solid var(--colorBg);
+    border-radius: var(--border-radius-small);
+    background-color: var(--colorBg);
+
+    @include hover {
+      background-color: var(--colorBgHover);
+      border: var(--border);
+    }
+
+    &:focus {
+      outline: var(--border);
+    }
+
+    &::placeholder {
+      font-size: 16px;
+
+      color: var(--colorPlaceholder);
+    }
+
+    &--select {
+      border-radius: var(--border-radius-very-small);
+
+      appearance: none;
+
+      &:invalid {
+        color: var(--colorPlaceholder);
+      }
+
+      & option {
+        color: var(--color-dark);
+
+        &:disabled {
+          background-color: var(--color-gray-light);
+        }
+      }
+    }
+
+    &--light-bg {
+      --colorBg: var(--color-light);
+      --colorBgHover: var(--color-light);
+    }
+  }
+}

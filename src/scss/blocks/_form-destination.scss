@@ -1,0 +1,35 @@
+@use '../helpers' as *;
+
+.form-destination {
+  $this: &;
+
+  &__label {
+    width: 150px;
+    padding-bottom: 27px;
+
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1;
+    text-align: center;
+
+    color: var(--color-gray-dark);
+
+    cursor: pointer;
+
+    @include hover {
+      color: var(--color-primary);
+    }
+
+    @include mobile {
+      width: 100px;
+      padding-bottom: 18px;
+    }
+
+    &:has(#{$this}__action:checked) {
+      color: var(--color-primary);
+      border-bottom: 3px solid currentColor;
+
+      pointer-events: none;
+    }
+  }
+}

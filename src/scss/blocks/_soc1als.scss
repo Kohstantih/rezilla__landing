@@ -1,0 +1,30 @@
+@use '../helpers' as *;
+
+.soc1als {
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
+
+  &__title {
+    @include fluid-text(19, 16);
+
+    font-weight: 500;
+    line-height: 1;
+  }
+
+  &__list {
+    display: flex;
+    column-gap: 20px;
+
+    color: var(--color-primary);
+
+    @include mobile {
+      justify-content: center;
+      column-gap: 40px;
+    }
+  }
+
+  &__icon {
+    @include square(22px);
+  }
+}

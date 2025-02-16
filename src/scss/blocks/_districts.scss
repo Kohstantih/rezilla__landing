@@ -1,0 +1,101 @@
+@use '../helpers' as *;
+
+.districts {
+  position: relative;
+
+  &::after {
+    @include square(100px);
+
+    content: '';
+    position: absolute;
+    bottom: -160px;
+    right: 5%;
+
+    z-index: -1;
+
+    border-radius: 50%;
+    background: var(--ball-gradient);
+
+    rotate: -45deg;
+
+    @include desktop {
+      bottom: 20%;
+      right: 25%;
+    }
+
+    @include tablet {
+      bottom: 10%;
+      right: 40%;
+    }
+
+    @include mobile {
+      @include square(60px);
+    }
+  }
+  &__header {
+    margin-bottom: 70px;
+
+    @include tablet {
+      margin-bottom: 50px;
+    }
+
+    @include mobile {
+      margin-bottom: 30px;
+    }
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(17, 1fr);
+    gap: 50px;
+
+    @include desktop {
+      grid-template-columns: repeat(3, minmax(270px, 300px));
+      gap: 30px;
+    }
+
+    @include tablet {
+      grid-template-columns: repeat(2, 270px);
+    }
+
+    @include mobile {
+      grid-template-columns: repeat(2, minmax(155px, 270px));
+      gap: 23px;
+    }
+  }
+
+  &__item {
+    height: 320px;
+
+    grid-column: span 5;
+
+    @include desktop {
+      height: 270px;
+    }
+
+    @include mobile {
+      height: clamp(155px, 35.16vw, 270px);
+    }
+
+    &--3 {
+      grid-column: span 7;
+    }
+
+    &--4 {
+      grid-column: span 7;
+    }
+
+    &--5 {
+      grid-column: span 10;
+    }
+
+    &,
+    &--3,
+    &--4,
+    &--5 {
+      @include desktop {
+        grid-column: span 1;
+      }
+    }
+  }
+}

@@ -1,0 +1,83 @@
+@use 'helpers/' as *;
+
+:root {
+  --font-family: 'Poppins', sans-serif;
+
+  --color-primary: #3a0ca3;
+  --color-violet: #7209b7;
+  --color-violet-light: #4361ee4d;
+  --color-blue-light: #d7eeff;
+  --color-blue: #119bff;
+  --color-blue-dark: #4361ee;
+  --color-red: #ff1111;
+  --color-red-light: #ffe1e1;
+  --color-green: #00ce3a;
+  --color-green-light: #f1fff1;
+
+  --color-gold: #ffc700;
+
+  --color-light: #ffffff;
+  --color-gray-light: #d4d4d4;
+  --color-gray-light-20: #d4d4d433;
+  --color-gray: #aaaaaa;
+  --color-gray-dark: #808080;
+  --color-dark-light: #2b2b2b;
+  --color-dark: #0b090a;
+
+  --section-padding-y: 90px;
+
+  --button-height-small: 40px;
+  --button-height-normal: 50px;
+  --button-height-large: 60px;
+
+  --container-width: 1240px;
+  --container-padding-x: 20px;
+  --container-s-padding-x: 80px;
+  --container-m-padding-x: 60px;
+  --container-l-padding-x: 40px;
+
+  --review-slider-width: 500px;
+  --review-slider-height: 358px;
+
+  --search-form-padding: 40px;
+
+  --border: 1px solid var(--color-primary);
+  --border-light: 1px solid var(--color-light);
+  --border-radius-very-small: 10px;
+  --border-radius-small: 20px;
+  --border-radius: 30px;
+  --border-radius-large: 50px;
+  --border-radius-super-large: 120px;
+
+  --shadow-black: 4px 10px 30px 0 #00000026;
+  --shadow-blue: 4px 10px 30px 0 #4361ee66;
+
+  --transition-duration: 0.2s;
+
+  --ball-gradient: linear-gradient(180deg, #4361ee 0%, rgba(67, 97, 238, 0) 100%);
+  --ball-gradient-light: linear-gradient(180deg, #fff 0%, rgba(255, 255, 255, 0) 100%);
+
+  @include desktop {
+    --section-padding-y: 50px;
+    --container-s-padding-x: 50px;
+    --container-m-padding-x: 30px;
+    --container-l-padding-x: 30px;
+  }
+
+  @include tablet {
+    --border-radius-super-large: 100px;
+  }
+
+  @include mobile {
+    --container-padding-x: 30px;
+    --container-s-padding-x: 30px;
+
+    --review-slider-width: clamp(333px, 84.7vw, 500px);
+
+    --search-form-padding: 20px;
+    --button-height-large: 50px;
+    --section-padding-y: 50px;
+    --border-radius: 20px;
+    --border-radius-super-large: 80px;
+  }
+}

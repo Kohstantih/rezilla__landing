@@ -1,0 +1,56 @@
+@use '../helpers' as *;
+
+.status {
+  --colorStatus: var(--color-red);
+  --bgColorStatus: var(--color-red-light);
+
+  font-weight: 500;
+  text-transform: capitalize;
+
+  color: var(--colorStatus);
+  background-color: var(--bgColorStatus);
+  border-radius: var(--border-radius-small);
+
+  overflow: hidden;
+
+  @include hover {
+    opacity: 0.8;
+  }
+
+  &--new {
+    --colorStatus: var(--color-blue);
+    --bgColorStatus: var(--color-blue-light);
+  }
+
+  &--discount {
+    --colorStatus: var(--color-green);
+    --bgColorStatus: var(--color-green-light);
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    height: 42px;
+    padding-inline: 24px;
+
+    @include reset-link;
+
+    @include mobile {
+      height: 35px;
+    }
+  }
+
+  &__icon-wrapper {
+    @include flex-center;
+  }
+
+  &__icon {
+    width: 20px;
+    height: 22px;
+
+    @include mobile {
+      height: 16px;
+    }
+  }
+}

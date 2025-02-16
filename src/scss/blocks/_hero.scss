@@ -1,0 +1,33 @@
+@use '../helpers' as *;
+
+.hero {
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 60px;
+
+    @include desktop {
+      flex-direction: column;
+      align-items: center;
+      row-gap: 60px;
+    }
+
+    @include mobile {
+      padding-inline: 0;
+      row-gap: 40px;
+    }
+  }
+
+  &__main {
+    align-self: end;
+
+    @include desktop {
+      align-self: center;
+    }
+  }
+
+  &__aside {
+    display: flex;
+    align-items: end;
+  }
+}
