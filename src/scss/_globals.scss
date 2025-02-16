@@ -1,5 +1,9 @@
 @use 'helpers' as *;
 
+html {
+  overflow-x: hidden;
+}
+
 body {
   @include fluid-text(16, 13);
 
@@ -9,6 +13,8 @@ body {
 
   color: var(--color-dark-light);
   background-color: var(--color-light);
+
+  overflow-x: hidden;
 }
 
 a,

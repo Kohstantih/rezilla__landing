@@ -7,7 +7,12 @@
   padding: 14px 20px;
 
   border: none;
-  background: linear-gradient(180deg, var(--color-light) 0%, var(--color-blue-light) 60%, var(--color-primary) 100%);
+  background: linear-gradient(
+    180deg,
+    var(--color-light) 0%,
+    var(--color-blue-light) 60%,
+    var(--color-primary) 100%
+  );
 
   &__close-button-wrapper {
     display: flex;
