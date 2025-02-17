@@ -21,6 +21,10 @@
     display: flex;
 
     transition-duration: 1s;
+
+    @include tablet {
+      transform: none !important;
+    }
   }
 
   &__item-group {

@@ -22,29 +22,39 @@ export default class SliderControl {
       this.selectors.paginationItem,
     );
 
+    this.sliderNumber = 0;
+    this.lastResizeTimeoutId = null;
+    this.touchStartX = 0;
+    this.offsetMovedSlider = 0;
+
     this.onClickNext = this.onClickNext.bind(this);
     this.onClickPrevious = this.onClickPrevious.bind(this);
     this.onClickPagination = this.onClickPagination.bind(this);
     this.onResizeWindow = this.onResizeWindow.bind(this);
-
-    this.sliderNumber = 0;
-    this.lastResizeTimeoutId = null;
+    this.onTouchStart = this.onTouchStart.bind(this);
+    this.onTouchMove = this.onTouchMove.bind(this);
+    this.onTouchEnd = this.onTouchEnd.bind(this);
   }
 
-  sliderScroll() {
-    const sliderWidth = this.sliderItemBox[0].offsetWidth;
-
-    this.sliderList.style.transform = `translate(-${this.sliderNumber * sliderWidth}px)`;
+  moveSlider(offset) {
+    this.sliderList.style.transform = `translate(${offset}px)`;
   }
 
-  onResizeWindow() {
-    if (this.lastResizeTimeoutId) clearTimeout(this.lastResizeTimeoutId);
+  scrollSlider() {
+    if (this.sliderNumber >= this.sliderItemBox.length) {
+      this.sliderNumber = 0;
+    }
 
-    this.lastResizeTimeoutId = setTimeout(() => {
-      this.sliderScroll();
+    if (this.sliderNumber < 0) {
+      this.sliderNumber = this.sliderItemBox.length - 1;
+    }
 
-      this.lastResizeTimeoutId = null;
-    }, 300);
+    const slideWidth = this.sliderItemBox[0].offsetWidth;
+    const offset = -(this.sliderNumber * slideWidth);
+    this.offsetMovedSlider = offset;
+
+    this.moveSlider(offset);
+    this.switchPagination();
   }
 
   switchPagination() {
@@ -55,32 +65,64 @@ export default class SliderControl {
     });
   }
 
+  onResizeWindow() {
+    if (this.lastResizeTimeoutId) clearTimeout(this.lastResizeTimeoutId);
+
+    this.lastResizeTimeoutId = setTimeout(() => {
+      this.scrollSlider();
+
+      this.lastResizeTimeoutId = null;
+    }, 300);
+  }
+
   onClickNext() {
     this.sliderNumber += 1;
 
-    if (this.sliderNumber >= this.sliderItemBox.length) {
-      this.sliderNumber = 0;
-    }
-
-    this.sliderScroll();
-    this.switchPagination();
+    this.scrollSlider();
   }
 
   onClickPrevious() {
     this.sliderNumber -= 1;
 
-    if (this.sliderNumber < 0) {
-      this.sliderNumber = this.sliderItemBox.length - 1;
-    }
-
-    this.sliderScroll();
-    this.switchPagination();
+    this.scrollSlider();
   }
 
-  onClickPagination(e) {
-    this.sliderNumber = e.currentTarget.value;
+  onClickPagination(event) {
+    this.sliderNumber = event.currentTarget.value;
 
-    this.sliderScroll();
+    this.scrollSlider();
+  }
+
+  onTouchStart(event) {
+    this.touchStartX = event.touches[0].clientX;
+  }
+
+  onTouchMove(event) {
+    const xMoving = event.touches[0].clientX;
+    const xDiff = xMoving - this.touchStartX;
+    const offset = this.offsetMovedSlider + xDiff;
+
+    this.moveSlider(offset);
+  }
+
+  onTouchEnd(event) {
+    const xEnd = event.changedTouches[0].clientX;
+    const xDiff = xEnd - this.touchStartX;
+
+    if (Math.abs(xDiff) < 30) {
+      this.scrollSlider();
+      return;
+    }
+
+    if (xDiff > 0) {
+      this.sliderNumber -= 1;
+    } else if (xDiff < 0) {
+      this.sliderNumber += 1;
+    } else {
+      return;
+    }
+
+    this.scrollSlider();
   }
 
   init() {
@@ -91,5 +133,8 @@ export default class SliderControl {
     this.paginationList?.forEach((item) => {
       item.addEventListener('click', this.onClickPagination);
     });
+    this.sliderList.addEventListener('touchstart', this.onTouchStart);
+    this.sliderList.addEventListener('touchmove', this.onTouchMove);
+    this.sliderList.addEventListener('touchend', this.onTouchEnd);
   }
 }
